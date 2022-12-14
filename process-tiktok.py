@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -7,6 +7,10 @@ import csv
 from datetime import datetime
 
 import pdb
+#pdb.set_trace()
+if len(sys.argv) <= 1:
+  print('Provide path/name of ndjson file')
+  sys.exit()
 
 filename = sys.argv[1]
 # zeeschuimer-export-tiktok.com-2022-12-09T201420.ndjson
@@ -19,9 +23,11 @@ with open(filename) as f:
 
 header = ["id","thread_id","author","author_full","author_id","author_followers","body","timestamp","is_duet","music_name","music_id","music_url","video_url","tiktok_url","thumbnail_url","likes","comments","shares","plays","hashtags","stickers","warning","unix_timestamp"]
 
-if not os.path.isdir('output'):
-  os.mkdir('output')
-with open('output/output.csv', 'w', encoding='UTF8') as f:
+outputDir = 'data/output/tiktok'
+if not os.path.isdir(outputDir):
+  os.makedirs(outputDir)
+
+with open('data/output/tiktok/output.csv', 'w', encoding='UTF8') as f:
   writer = csv.writer(f)
   writer.writerow(header)
 
