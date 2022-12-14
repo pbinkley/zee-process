@@ -1,0 +1,10 @@
+Installation
+- pip install -r requirements.txt
+
+Steps
+
+- visit Tiktok or Instagram, log in
+- scroll a bunch
+- click the Zeeschuimer extenstion icon (Z)
+- in the Action menu click the ".ndjson" button for the site you're on
+- Zeeschuimer saves it to your Downloads folder (without giving notification, at least for me in Firefox)

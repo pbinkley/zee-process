@@ -1,0 +1,22 @@
+.nav_index -> item_id # this is string version of id
+.nav_index -> thread_id # made sure this is always the same as id
+.data.author.uniqueId -> author
+.data.author.nickname -> author_full
+.data.author.id -> author_id
+.data.authorStats.followerCount -> author_followers
+.data.desc -> body
+timestamp # spreadsheet has ISO, ndjson has unix - converted from .data.createTime - no milleseconds or timezone
+is_duet # all false in this dataset - could come from .data.author.duetSetting or .data.duetInfo.duetFromId - both of these are 0 but latter is string "0", former is number - there's also a field .data.duetEnabled which is true or false in different records in this set
+.data.music.title -> music_name
+.data.music.id -> music_id
+.data.music.playUrl -> music_url
+.data.video.playAddr -> video_url
+'https://tiktok.com/@{author}/video/{id}' -> tiktok_url
+thumbnail_url # is D for every row
+.data.stats.diggCount -> likes
+.data.stats.commentCount -> comments
+.data.stats.shareCount -> shares
+.data.stats.playCount -> plays
+.data.textExtra[.hashtagName] -> hashtags # multiple values, comma-separated
+.data.stickersOnItem[[.stickerText]] -> stickers # multiple values, separated by cr's; within a sticker there's an array of strings which should be concatenated with spaces; stickers have sticker types (numeric), don't know what they mean; one item has two stickers with almost same text: type 4 (omits opening single quote) and type 9 (includes opening single quote)
+.data.createTime -> unix_timestamp
